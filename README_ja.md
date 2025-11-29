@@ -1,17 +1,17 @@
 # 3Dウェブ地図表示ツール
 - CesuimJS
   - 静岡県沼津市 3次元点群データ（3D Tiles）  
-https://geolonia.github.io/komazawa-u-3dmap/index_1_1.html
+https://tossetolab.github.io/3dmapcompare/index_1_1.html
   - 静岡県沼津市 建築物モデル（3D Tiles）  
-https://geolonia.github.io/komazawa-u-3dmap/index_1_2.html
+https://tossetolab.github.io/3dmapcompare/index_1_2.html
 
 - MapLibre GL JS、deck.gl等
   - 静岡県沼津市 3次元点群データ（3D Tiles）  
-https://geolonia.github.io/komazawa-u-3dmap/index_2_1.html
+https://tossetolab.github.io/3dmapcompare/index_2_1.html
   - 静岡県沼津市 建築物モデル（3D Tiles）  
-https://geolonia.github.io/komazawa-u-3dmap/index_2_2.html
+https://tossetolab.github.io/3dmapcompare/index_2_2.html
   - 静岡県沼津市 建築物モデル（MVT）  
-https://geolonia.github.io/komazawa-u-3dmap/index_2_3.html
+https://tossetolab.github.io/3dmapcompare/index_2_3.html
 
 # 構築の手順メモ
 ## 必要な環境
@@ -40,7 +40,7 @@ https://geolonia.github.io/komazawa-u-3dmap/index_2_3.html
 - 3次元点群データ（3D Tiles）のローダーとして使用
 
 ## 使用データ
-[3次元ウェブ地図表示のためのデータ変換業務（大阪公立大学）](https://github.com/geolonia/omu-3dmap-data-converter)にて作成した、以下の3次元点群データおよび3D都市モデルPLATEAU建築物モデル（2次メッシュまたは3次メッシュ）のタイルデータを使用します。  
+[3次元ウェブ地図表示のためのデータ変換](https://tossetolab.github.io/3dmapcompare/3dmap-data-converter/)にて作成した、以下の3次元点群データおよび3D都市モデルPLATEAU建築物モデル（2次メッシュまたは3次メッシュ）のタイルデータを使用します。  
 - ※注意事項1:3次元点群データの3D Tilesのバージョンは1.0、3D都市モデルPLATEAU建築物モデルの3D Tilesのバージョンは1.1となっています。  
 - ※注意事項2:3D都市モデルPLATEAU建築物モデルの3D Tilesのバージョンは1.1ですが、deck.glでの読み込みに対応させるため、tileset.jsonの"version": "1.0"を"version": "0.0"に変更しています。
 - 3次元点群データ2次メッシュ523856(3D Tiles形式)  
