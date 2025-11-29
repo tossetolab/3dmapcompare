@@ -15,7 +15,7 @@
     https://geolonia.github.io/komazawa-u-3dmap/index_2_3.html
 
 For details on data conversion to 3D Tiles and MVT, see the following document:
-- [3D Map Data Converter Documentation (English)](3dmap-data-converter/3dmap-data-converter_en.md)
+- [3D Map Data Converter Documentation](3dmap-data-converter/3dmap-data-converter.md)
 
 # Notes on Build Procedure
 
