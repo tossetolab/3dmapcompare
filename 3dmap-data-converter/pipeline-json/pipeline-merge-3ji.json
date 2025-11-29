@@ -1,0 +1,16 @@
+{
+    "pipeline": [
+        {
+            "type": "readers.las",
+            "filename": "LAS/*.las"
+        },
+        {
+            "type": "filters.crop",
+            "bounds": "([31908.8161,33045.0584],[-99789.5937,-98861.0851])"
+        },
+        {
+            "type": "writers.las",
+            "filename": "52385628.las"
+        }
+    ]
+}
