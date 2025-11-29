@@ -15,7 +15,7 @@
     https://geolonia.github.io/komazawa-u-3dmap/index_2_3.html
 
 For details on data conversion to 3D Tiles and MVT, see the following document:
-- [3D Map Data Converter Documentation (English)](3dmap-data-converter_en.md)
+- [3D Map Data Converter Documentation (English)](3dmap-data-converter/3dmap-data-converter_en.md)
 
 # Notes on Build Procedure
 
@@ -53,7 +53,7 @@ For details on data conversion to 3D Tiles and MVT, see the following document:
 
 ## Data used
 
-This viewer uses the following 3D point cloud data and tiled datasets of 3D city model PLATEAU building models (second‑order or third‑order mesh) generated in the project “[Data conversion work for 3D web map visualization (Osaka Metropolitan University)](https://github.com/geolonia/omu-3dmap-data-converter)”.
+This viewer uses the following 3D point cloud data and tiled datasets of 3D city model PLATEAU building models (second‑order or third‑order mesh) generated in the project “[Data conversion work for 3D web map visualization](3dmap-data-converter/)”.
 
 - Note 1: The 3D Tiles version of the 3D point cloud data is 1.0, while the 3D Tiles version of the 3D city model PLATEAU building models is 1.1.
 - Note 2: Although the 3D Tiles version of the 3D city model PLATEAU building models is 1.1, in order to make it loadable in deck.gl, the `"version": "1.0"` field in tileset.json has been changed to `"version": "0.0"`.
