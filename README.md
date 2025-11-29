@@ -94,5 +94,4 @@ This viewer uses the following 3D point cloud data and tiled datasets of 3D city
 
 - By default, tile data for the third‑order mesh is loaded.
 - Edit the tile data URLs in index.html as needed.
-
 - CesiumJS / Numazu City, Shizuoka Prefecture – 3D point cloud data (3D Tiles)
