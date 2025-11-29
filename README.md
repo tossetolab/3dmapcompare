@@ -2,17 +2,17 @@
 
 - CesiumJS
   - Numazu City, Shizuoka Prefecture – 3D point cloud data (3D Tiles)
-    https://geolonia.github.io/komazawa-u-3dmap/index_1_1.html
+    https://tossetolab.github.io/3dmapcompare/index_1_1.html
   - Numazu City, Shizuoka Prefecture – building model (3D Tiles)
-    https://geolonia.github.io/komazawa-u-3dmap/index_1_2.html
+    https://tossetolab.github.io/3dmapcompare/index_1_2.html
 
 - MapLibre GL JS, deck.gl, etc.
   - Numazu City, Shizuoka Prefecture – 3D point cloud data (3D Tiles)
-    https://geolonia.github.io/komazawa-u-3dmap/index_2_1.html
+    https://tossetolab.github.io/3dmapcompare/index_2_1.html
   - Numazu City, Shizuoka Prefecture – building model (3D Tiles)
-    https://geolonia.github.io/komazawa-u-3dmap/index_2_2.html
+    https://tossetolab.github.io/3dmapcompare/index_2_2.html
   - Numazu City, Shizuoka Prefecture – building model (MVT)
-    https://geolonia.github.io/komazawa-u-3dmap/index_2_3.html
+    https://tossetolab.github.io/3dmapcompare/index_2_3.html
 
 For details on data conversion to 3D Tiles and MVT, see the following document:
 - [3D Map Data Converter Documentation](3dmap-data-converter/3dmap-data-converter.md)
