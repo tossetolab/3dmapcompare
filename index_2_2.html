@@ -1,0 +1,120 @@
+<html>
+
+<head>
+  <title>静岡県沼津市 建築物モデル（3D Tiles）</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://unpkg.com/maplibre-gl@4.5.0/dist/maplibre-gl.js'></script>
+  <link href='https://unpkg.com/maplibre-gl@4.5.0/dist/maplibre-gl.css' rel='stylesheet' />
+  <script src="https://unpkg.com/deck.gl@8.9.0/dist.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script type="text/javascript">
+    // マップの初期化
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: {
+        version: 8,
+        sources: {
+          "gsi-std": {
+            type: "raster",
+            tiles: [
+              "https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png"
+            ],
+            tileSize: 256,
+            attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'
+          }
+        },
+        layers: [
+          {
+            id: "gsi-std-layer",
+            type: "raster",
+            source: "gsi-std"
+          }
+        ]
+      },
+      hash: true,
+      // 3次メッシュの初期位置
+      /*
+      zoom: 16.2,
+      center: [138.856632, 35.102878],
+      pitch: 60,
+      maxPitch: 85,
+      bearing: 0,
+      */
+      // 2次メッシュの初期位置
+      zoom: 13,
+      center: [138.82546, 35.11521],
+      pitch: 58,
+      maxPitch: 85,
+      bearing: 0,
+      attributionControl: false,
+    });
+
+    // ズーム・回転
+    map.addControl(new maplibregl.NavigationControl());
+
+    // フルスクリーンモードのオンオフ
+    map.addControl(new maplibregl.FullscreenControl());
+
+    // 現在位置表示
+    map.addControl(new maplibregl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: false
+      },
+      fitBoundsOptions: { maxZoom: 18 },
+      trackUserLocation: true,
+      showUserLocation: true
+    }));
+
+    // スケール表示
+    map.addControl(new maplibregl.ScaleControl({
+      maxWidth: 200,
+      unit: 'metric'
+    }));
+
+    // Attributionを折りたたみ表示
+    map.addControl(new maplibregl.AttributionControl({
+      compact: true,
+      customAttribution: '<a href="https://www.geospatial.jp/ckan/dataset/plateau-22203-numazu-shi-2021" target="_blank">3D都市モデル（Project PLATEAU）沼津市（2021年度）</a>'
+    }));
+
+    map.on('load', () => {
+      // MapboxOverlayを使ったインターリーブ
+      const overlay = new deck.MapboxOverlay({
+        interleaved: true,
+        layers: [
+          // 建築物モデル（3D Tiles）
+          new deck.Tile3DLayer({
+            id: 'numazushi-bldg',
+            data: 'https://public-data.geolonia.com/komazawa-u-3dmap/3dtiles_bldg_523856_2021/tileset.json', // 2次メッシュ
+            // data: 'https://public-data.geolonia.com/komazawa-u-3dmap/3dtiles_bldg_52385628_2021/tileset.json', // 3次メッシュ
+            opacity: 1,
+            pointCloud: false,
+            onTileLoad: d => {
+              const { content } = d;
+              content.cartographicOrigin.z -= 40.4420 + 8.5;
+            }
+          })
+        ]
+      });
+
+      map.addControl(overlay);
+
+    });
+  </script>
+</body>
+
+</html>

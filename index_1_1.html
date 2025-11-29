@@ -1,0 +1,93 @@
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>静岡県沼津市 3次元点群データ（3D Tiles）</title>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.99/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.99/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <style>
+    #cesiumContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
+    // Viewerの初期化
+    var viewer = new Cesium.Viewer("cesiumContainer", {
+      imageryProvider: new Cesium.UrlTemplateImageryProvider({
+        url: "https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png",
+        credit: "地理院タイル",
+        maximumLevel: 18
+      }),
+      baseLayerPicker: false // ベースレイヤー切り替え機能を無効化
+    });
+
+    // 3次元点群データ（3D Tiles）
+    var pc_3dtiles = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
+      url: 'https://public-data.geolonia.com/komazawa-u-3dmap/3dtiles_pc_523856/tileset.json' // 2次メッシュ
+      // url: 'https://public-data.geolonia.com/komazawa-u-3dmap/3dtiles_pc_52385628/tileset.json' // 3次メッシュ
+    }));
+
+    // カメラの初期位置の指定
+    viewer.camera.setView({
+      // 3次メッシュの初期位置
+      /*
+      destination: Cesium.Cartesian3.fromDegrees(138.8565359127686, 35.091001223665174, 689),
+      orientation: {
+        heading: Cesium.Math.toRadians(0.0),
+        pitch: Cesium.Math.toRadians(-28.0),
+        roll: 0.0
+      }
+      */
+      // 2次メッシュの初期位置
+      destination: Cesium.Cartesian3.fromDegrees(138.8400301332497, 35.00186357178486, 6693),
+      orientation: {
+        heading: Cesium.Math.toRadians(0.0),
+        pitch: Cesium.Math.toRadians(-31.0),
+        roll: 0.0
+      }
+    });
+
+    // カメラの動きに応じて現在のパラメータを取得
+    viewer.camera.changed.addEventListener(() => {
+      const cameraPosition = viewer.camera.positionCartographic;  // 現在の位置を取得
+      const heading = viewer.camera.heading;   // ヘディング（方位）
+      const pitch = viewer.camera.pitch;       // ピッチ（上下の角度）
+      const roll = viewer.camera.roll;         // ロール（横回転）
+
+      console.log("現在のカメラ位置:");
+      console.log("経度 (longitude):", Cesium.Math.toDegrees(cameraPosition.longitude));
+      console.log("緯度 (latitude):", Cesium.Math.toDegrees(cameraPosition.latitude));
+      console.log("高度 (height):", cameraPosition.height);
+
+      console.log("現在のカメラ向き:");
+      console.log("ヘディング (heading):", Cesium.Math.toDegrees(heading));
+      console.log("ピッチ (pitch):", Cesium.Math.toDegrees(pitch));
+      console.log("ロール (roll):", Cesium.Math.toDegrees(roll));
+    });
+  </script>
+</body>
+
+</html>
